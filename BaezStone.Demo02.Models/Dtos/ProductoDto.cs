@@ -11,5 +11,6 @@ namespace BaezStone.Demo02.Models.Dtos
         public string Category { get; set; }
         public string Marca { get; set; }
         public double Precio { get; set; }
+        public double Costo { get; set; }
     }
 }
