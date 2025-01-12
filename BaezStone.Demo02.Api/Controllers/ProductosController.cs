@@ -21,7 +21,8 @@ namespace BaezStone.Demo02.Api.Controllers
                         FullName = x.FullName,
                         Category = x.Category,
                         Marca = x.Marca,
-                        Precio = x.Precio
+                        Precio = x.Precio,
+                        Costo = x.Costo
                     }).ToList();
         }
     }

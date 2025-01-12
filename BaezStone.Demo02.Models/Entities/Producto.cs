@@ -12,5 +12,6 @@ namespace BaezStone.Demo02.Models.Entities
         public string Category { get; set; }
         public string Marca { get; set; }
         public double Precio { get; set; }
+        public double Costo { get; set; }
     }
 }
