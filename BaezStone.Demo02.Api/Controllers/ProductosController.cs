@@ -14,7 +14,7 @@ namespace BaezStone.Demo02.Api.Controllers
     public class ProductosController : ControllerBase
     {
         [HttpGet]
-        public ActionResult<List<ProductoDto>> Get()
+        public ActionResult<List<ProductoDto>> GetProducts()
         {
             return ProductoData
                     .ListaProducto.Select(x => new ProductoDto{
