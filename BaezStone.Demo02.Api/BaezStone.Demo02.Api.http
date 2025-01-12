@@ -1,0 +1,6 @@
+@BaezStone.Demo02.Api_HostAddress = http://localhost:5153
+
+GET {{BaezStone.Demo02.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
