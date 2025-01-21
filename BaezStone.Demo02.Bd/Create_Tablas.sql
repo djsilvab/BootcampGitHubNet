@@ -1,3 +1,4 @@
+-- Tabla: Categoria --
 CREATE TABLE Categoria(
   CategoriaId int NOT NULL IDENTITY,
   Nombre nvarchar(120) NOT NULL
@@ -6,6 +7,7 @@ CREATE TABLE Categoria(
 ALTER TABLE Categoria
 ADD CONSTRAINT Categoria_PK PRIMARY KEY (CategoriaId);
 
+-- Tabla: Marca --
 CREATE TABLE Marca(
   MarcaId int NOT NULL IDENTITY,
   Nombre nvarchar(120) NOT NULL
@@ -14,6 +16,7 @@ CREATE TABLE Marca(
 ALTER TABLE Marca
 ADD CONSTRAINT Marca_PK PRIMARY KEY (MarcaId);
 
+-- Tabla: Producto --
 CREATE TABLE Producto(
   ProductoId int NOT NULL IDENTITY,
   Nombre nvarchar(120) NOT NULL,
@@ -34,8 +37,10 @@ ALTER TABLE Producto
 ADD CONSTRAINT Producto_Marca_MarcaId FOREIGN KEY (MarcaId)
 REFERENCES Marca (MarcaId) ON DELETE CASCADE;
 
+-- Data: Categoria --
 INSERT INTO Categoria(Nombre) Values('Computadoras');
 INSERT INTO Categoria(Nombre) Values('Impresoras');
 
+-- Data: Marca --
 INSERT INTO Marca(Nombre) Values('HP');
-INSERT INTO Marca(Nombre) Values('Apple');  
+INSERT INTO Marca(Nombre) Values('Apple');
