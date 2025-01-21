@@ -38,9 +38,7 @@ ADD CONSTRAINT Producto_Marca_MarcaId FOREIGN KEY (MarcaId)
 REFERENCES Marca (MarcaId) ON DELETE CASCADE;
 
 -- Data: Categoria --
-INSERT INTO Categoria(Nombre) Values('Computadoras');
-INSERT INTO Categoria(Nombre) Values('Impresoras');
+INSERT INTO Categoria(Nombre) Values('Computadoras'),('Impresoras');
 
 -- Data: Marca --
-INSERT INTO Marca(Nombre) Values('HP');
-INSERT INTO Marca(Nombre) Values('Apple');
+INSERT INTO Marca(Nombre) Values('HP'),('Apple');
