@@ -9,9 +9,9 @@ namespace BaezStone.Demo02.Data
     public static class ProductoData
     {
         public static List<Producto> ListaProducto = new List<Producto>(){
-            new Producto(){Id = 1, FullName = "XXX", Precio=2000, Marca="Gloria",Category="Lacteo",Costo=100},
-            new Producto(){Id = 2, FullName = "YYY", Precio=3000, Marca="Laive",Category="Lacteo",Costo=200},
-            new Producto(){Id = 3, FullName = "ZZZ", Precio=3500, Marca="Don Victorio",Category="Lacteo",Costo=150}
+            new Producto(){Id = 1, Nombre = "XXX", Precio=2000, MarcaId=1,CategoriaId=2,Costo=100},
+            new Producto(){Id = 2, Nombre = "YYY", Precio=3000, MarcaId=1,CategoriaId=2,Costo=200},
+            new Producto(){Id = 3, Nombre = "ZZZ", Precio=3500, MarcaId=1,CategoriaId=2,Costo=150}
         };
         
     }
