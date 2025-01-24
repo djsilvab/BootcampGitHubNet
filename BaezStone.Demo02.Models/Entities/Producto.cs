@@ -13,10 +13,15 @@ namespace BaezStone.Demo02.Models.Entities
         [Key]
         [Column("ProductoId")]
         public int Id { get; set; }
-        public string FullName { get; set; }
-        public string Category { get; set; }
-        public string Marca { get; set; }
-        public double Precio { get; set; }
-        public double Costo { get; set; }
+        public string Nombre { get; set; }
+        public decimal Precio { get; set; }
+        public decimal Costo { get; set; }
+        public int CategoriaId { get; set; }
+        [ForeignKey("CategoriaId")]
+        public Categoria Categoria { get; set; }
+        public int MarcaId { get; set; }
+        [ForeignKey("MarcaId")]
+        public Marca Marca { get; set; }
+        
     }
 }
