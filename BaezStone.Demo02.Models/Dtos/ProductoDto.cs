@@ -12,5 +12,7 @@ namespace BaezStone.Demo02.Models.Dtos
         public string Marca { get; set; }
         public decimal Precio { get; set; }
         public decimal Costo { get; set; }
+        public string TextoPromocional { get; set; }
+        public decimal PrecioActual  { get; set; }
     }
 }
