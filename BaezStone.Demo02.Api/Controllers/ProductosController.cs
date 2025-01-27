@@ -27,30 +27,42 @@ namespace BaezStone.Demo02.Api.Controllers
             => await context.Productos
                 .Include(x => x.Categoria)
                 .Include(x => x.Marca)
+                .Include(x => x.Promocion)
                 .Select(x => new ProductoDto{
                                 Nombre = x.Nombre,
                                 Categoria = x.Categoria.Nombre,
                                 Marca = x.Marca.Nombre,
                                 Precio = x.Precio,
-                                Costo = x.Costo
+                                Costo = x.Costo,
+                                PrecioActual = x.Promocion != null? 
+                                               x.Promocion.NuevoPrecio : x.Precio,
+                                TextoPromocional = x.Promocion != null? 
+                                                   x.Promocion.TextoPromocional :
+                                                   string.Empty
             }).ToListAsync();
 
         [HttpGet("{id}")]
         public async Task<ActionResult<ProductoDto>> GetOne(int id)
         {
-            Producto? producto = await context.Productos
+            Producto? productoBD = await context.Productos
                                         .Include(x => x.Categoria)
                                         .Include(x => x.Marca)
+                                        .Include(x => x.Promocion)
                                         .FirstOrDefaultAsync(x => x.Id.Equals(id));
 
-            if(producto is null) return NotFound();                                        
+            if(productoBD is null) return NotFound();                                        
 
             var productoDto = new ProductoDto{
-                Nombre = producto.Nombre,
-                Categoria = producto.Categoria.Nombre,
-                Marca = producto.Marca.Nombre,
-                Costo = producto.Costo,
-                Precio = producto.Precio
+                Nombre = productoBD.Nombre,
+                Categoria = productoBD.Categoria.Nombre,
+                Marca = productoBD.Marca.Nombre,
+                Costo = productoBD.Costo,
+                Precio = productoBD.Precio,
+                PrecioActual = productoBD.Promocion != null? 
+                               productoBD.Promocion.NuevoPrecio : productoBD.Precio,
+                                TextoPromocional = productoBD.Promocion != null? 
+                                                   productoBD.Promocion.TextoPromocional :
+                                                   string.Empty
             };
 
             return Ok(productoDto);
