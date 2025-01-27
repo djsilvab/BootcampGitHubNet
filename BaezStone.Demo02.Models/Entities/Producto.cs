@@ -22,6 +22,7 @@ namespace BaezStone.Demo02.Models.Entities
         public int MarcaId { get; set; }
         [ForeignKey("MarcaId")]
         public Marca Marca { get; set; }
+        public PrecioOferta Promocion { get; set; }
         
     }
 }

@@ -42,3 +42,25 @@ INSERT INTO Categoria(Nombre) Values('Computadoras'),('Impresoras');
 
 -- Data: Marca --
 INSERT INTO Marca(Nombre) Values('HP'),('Apple');
+
+-- Tabla: PrecioOferta --
+CREATE TABLE PrecioOferta(
+  PrecioOfertaId int NOT NULL IDENTITY,
+  NuevoPrecio numeric(7,2) NOT NULL,
+  TextoPromocional nvarchar(120) NOT NULL,
+  ProductoId int NOT NULL
+);
+
+ALTER TABLE PrecioOferta
+ADD CONSTRAINT PrecioOferta_PK PRIMARY KEY (PrecioOfertaId);
+
+ALTER TABLE PrecioOferta
+ADD CONSTRAINT PrecioOferta_ProductoId_UNQ UNIQUE (ProductoId);
+
+ALTER TABLE PrecioOferta
+ADD CONSTRAINT PrecioOferta_Producto_ProductoId_FK FOREIGN KEY (ProductoId)
+REFERENCES Producto (ProductoId) ON DELETE CASCADE;
+
+-- Data: PrecioOferta --
+INSERT INTO PrecioOferta(NuevoPrecio,TextoPromocional,ProductoId)
+VALUES(1800,'Oferta de verano',1);
