@@ -54,3 +54,21 @@ ADD CONSTRAINT PrecioOferta_ProductoId_UNQ UNIQUE (ProductoId);
 ALTER TABLE PrecioOferta
 ADD CONSTRAINT PrecioOferta_Producto_ProductoId_FK FOREIGN KEY (ProductoId)
 REFERENCES Producto (ProductoId) ON DELETE CASCADE;
+
+-- Tabla: Libros --
+CREATE TABLE Libro(
+  LibroId int NOT NULL IDENTITY,
+  CategoriaId int NOT NULL,
+  Titulo nvarchar(120) NOT NULL,
+  Descripcion nvarchar(150) NOT NULL,
+  Publicado datetime2 NOT NULL,
+  Precio numeric(7,2) NOT NULL,
+  ImagenURL nvarchar(200)  
+);
+
+ALTER TABLE Libro
+ADD CONSTRAINT Libro_PK PRIMARY KEY (LibroId);
+
+ALTER TABLE Libro
+ADD CONSTRAINT Libro_Categoria_CategoriaId_FK FOREIGN KEY (CategoriaId)
+REFERENCES Categoria(CategoriaId) ON DELETE CASCADE;
