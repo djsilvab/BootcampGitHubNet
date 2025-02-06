@@ -72,3 +72,71 @@ ADD CONSTRAINT Libro_PK PRIMARY KEY (LibroId);
 ALTER TABLE Libro
 ADD CONSTRAINT Libro_Categoria_CategoriaId_FK FOREIGN KEY (CategoriaId)
 REFERENCES Categoria(CategoriaId) ON DELETE CASCADE;
+
+-- Tabla: Review --
+CREATE TABLE Review(
+  ReviewId int NOT NULL,
+  LibroId int NOT NULL,
+  Votante nvarchar(100) NOT NULL,
+  Estrellas tinyint NOT NULL,
+  Comentario nvarchar(3000) NOT NULL
+);
+
+ALTER TABLE Review
+ADD CONSTRAINT Review_PK PRIMARY KEY (ReviewId);
+
+ALTER TABLE Review
+ADD CONSTRAINT Review_Libro_LibroId_FK FOREIGN KEY (LibroId)
+REFERENCES Libro(LibroId) ON DELETE CASCADE;
+
+-- Tabla: LibroPrecioOferta --
+CREATE TABLE LibroPrecioOferta(
+  LibroPrecioOfertaId int NOT NULL IDENTITY,
+  LibroId int NOT NULL,
+  NuevoPrecio numeric(7,2) NOT NULL,
+  MensajePromocional nvarchar(120) NOT NULL
+)
+
+ALTER TABLE LibroPrecioOferta
+ADD CONSTRAINT LibroPrecioOferta_PK PRIMARY KEY(LibroPrecioOfertaId);
+
+ALTER TABLE LibroPrecioOferta
+ADD CONSTRAINT LibroPrecioOferta_LibroId_UNQ UNIQUE (LibroId);
+
+ALTER TABLE LibroPrecioOferta
+ADD CONSTRAINT LibroPrecioOferta_Libro_LibroId_FK FOREIGN KEY(LibroId)
+REFERENCES Libro(LibroId) ON DELETE CASCADE;
+
+-- Tabla: Autor --
+CREATE TABLE Autor
+(
+  AutorId int NOT NULL IDENTITY,
+  Nombre nvarchar(120) NOT NULL,
+  WebURL nvarchar(120) NOT NULL
+)
+
+ALTER TABLE Autor
+ADD CONSTRAINT Autor_PK PRIMARY KEY(AutorId);
+
+--Tabla: AutorLibro --
+CREATE TABLE AutorLibro
+(
+  AutorLibroId int NOT NULL IDENTITY,
+  AutorId int NOT NULL,
+  LibroId int NOT NULL,
+  Orden int NOT NULL
+);
+
+ALTER TABLE AutorLibro
+ADD CONSTRAINT AutorLibro_PK PRIMARY KEY(AutorLibroId);
+
+ALTER TABLE AutorLibro
+ADD CONSTRAINT AutorLibro_AutorId_LibroId_UNQ UNIQUE(AutorId,LibroId);
+
+ALTER TABLE AutorLibro
+ADD CONSTRAINT AutorLibro_Autor_AutorId_FK FOREIGN KEY(AutorId)
+REFERENCES Autor(AutorId) ON DELETE CASCADE;
+
+ALTER TABLE AutorLibro
+ADD CONSTRAINT AutorLibro_Libro_LibroId_FK FOREIGN KEY(LibroId)
+REFERENCES Libro(LibroId) ON DELETE CASCADE;

@@ -19,6 +19,9 @@ namespace BaezStone.Demo02.Data.Context
         public DbSet<Producto> Productos { get; set; }
         public DbSet<PrecioOferta> PrecioOfertas { get; set; }
         public DbSet<Libro> Libros { get; set; }
-        
+        public DbSet<Review> Reviews { get; set; }
+        public DbSet<Autor> Autores { get; set; }
+        public DbSet<LibroPrecioOferta> LibrosPreciosOfertas { get; set; }
+        public DbSet<AutorLibro> AutoresLibros { get; set; }
     }
 }

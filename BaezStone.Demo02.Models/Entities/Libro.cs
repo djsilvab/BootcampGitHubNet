@@ -20,6 +20,9 @@ namespace BaezStone.Demo02.Models.Entities
         public string ImagenURL { get; set; }
         public int CategoriaId { get; set; }
         [ForeignKey("CategoriaId")]
-        public Categoria Categoria { get; set; }
+        public Categoria Categoria { get; set; }        
+        public LibroPrecioOferta LibroPrecioOferta { get; set; }
+        public List<AutorLibro> AutoresLibros { get; set; }
+        public List<Review> Reviews { get; set; }
     }
 }
