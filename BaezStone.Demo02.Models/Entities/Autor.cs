@@ -7,13 +7,14 @@ using System.Threading.Tasks;
 
 namespace BaezStone.Demo02.Models.Entities
 {
-    [Table("Categoria")]
-    public class Categoria
+    [Table("Autor")]
+    public class Autor
     {
         [Key]
-        [Column("CategoriaId")]
+        [Column("AutorId")]
         public int Id { get; set; }
         public string Nombre { get; set; }
-        public List<Libro> Libros { get; set; }
+        public string WebURL { get; set; }
+        public List<AutorLibro> AutoresLibros { get; set; }
     }
 }
