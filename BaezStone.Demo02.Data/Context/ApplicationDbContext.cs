@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BaezStone.Demo02.Models.Entities;
+using BaezStone.Demo02.Models.Usp;
 using Microsoft.EntityFrameworkCore;
 
 namespace BaezStone.Demo02.Data.Context
@@ -23,5 +24,11 @@ namespace BaezStone.Demo02.Data.Context
         public DbSet<Autor> Autores { get; set; }
         public DbSet<LibroPrecioOferta> LibrosPreciosOfertas { get; set; }
         public DbSet<AutorLibro> AutoresLibros { get; set; }
+        public DbSet<LibroPublicado> LibrosPublicados { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<LibroPublicado>(e => e.HasNoKey());
+        }
     }
 }
