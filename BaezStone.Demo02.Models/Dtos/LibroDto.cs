@@ -11,6 +11,7 @@ namespace BaezStone.Demo02.Models.Dtos
         public string Categoria { get; set; }
         public string Descripcion { get; set; }
         public decimal Precio { get; set; }
+        public DateTime Publicado { get; set; }
 
     }
 }

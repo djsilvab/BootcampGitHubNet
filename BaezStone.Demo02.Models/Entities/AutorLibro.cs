@@ -11,7 +11,7 @@ namespace BaezStone.Demo02.Models.Entities
     public class AutorLibro
     {
         [Key]
-        [Column("AutorLibro")]
+        [Column("AutorLibroId")]
         public int Id { get; set; }
         public int AutorId { get; set; }
         [ForeignKey("AutorId")]
