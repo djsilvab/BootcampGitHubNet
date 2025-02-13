@@ -10,5 +10,6 @@ namespace BaezStone.Demo02.Models.Usp
         public string Autor { get; set; }
         public string Libro { get; set; }
         public DateTime Publicado { get; set; }
+        public string TipoLibro { get; set; }
     }
 }

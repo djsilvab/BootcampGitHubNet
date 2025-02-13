@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using BaezStone.Demo02.Data.Context;
 using BaezStone.Demo02.Models.Dtos;
 using BaezStone.Demo02.Models.Entities;
+using BaezStone.Demo02.Models.Request;
 using BaezStone.Demo02.Models.Usp;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -145,6 +146,19 @@ namespace BaezStone.Demo02.Api.Controllers
                                    .FromSqlRaw("uspObtenerLibrosPublicadosPorRango {0},{1}", rangoIni, rangoFin)
                                    .ToListAsync();
             return Ok(lst);                                   
+        }
+
+        [HttpPost("CambiarPrecioPorCategoria")]
+        public async Task<ActionResult> CambiarPrecioPorCategoriaSP(CambiarPrecioRequest precioRequest)
+        {
+            if(precioRequest.Porcentaje <= 0 || precioRequest.Porcentaje > 0)return BadRequest("El campo Porcentaje debe ser entre 1 y 100");
+
+            await context.Database
+                    .ExecuteSqlInterpolatedAsync(
+                        $"EXEC uspCambiarPrecioPorCategoria @CategoriaId={precioRequest.CategoriaId},@Porcentaje={precioRequest.Porcentaje},@TextoPromocional={precioRequest.TextoPromocional}"
+                    );
+            
+            return Ok("Actualización de precio");                        
         }
 
 
