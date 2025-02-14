@@ -140,3 +140,23 @@ REFERENCES Autor(AutorId) ON DELETE CASCADE;
 ALTER TABLE AutorLibro
 ADD CONSTRAINT AutorLibro_Libro_LibroId_FK FOREIGN KEY(LibroId)
 REFERENCES Libro(LibroId) ON DELETE CASCADE;
+
+-- Tabla: LibroTituloEstado --
+CREATE TABLE LibroTituloEstado(
+  LibroTituloEstadoId INT NOT NULL IDENTITY,
+  LibroId int not null,
+  TituloAnterior nvarchar(120) not null,
+  TituloActualizado nvarchar(120) not null,
+  FechaActualizado DATETIME2 not NULL
+);
+
+ALTER TABLE LibroTituloEstado 
+ADD CONSTRAINT LibroTituloEstado_PK PRIMARY KEY (LibroTituloEstadoId);
+
+ALTER TABLE LibroTituloEstado
+ADD CONSTRAINT LibroTituloEstado_Libro_LibroId_FK FOREIGN KEY (LibroId)
+REFERENCES Libro(LibroId) ON DELETE CASCADE;
+
+-- Tabla: LibroHistorico --
+SELECT * INTO LibroHistorico FROM Libro WHERE 1 = 0;
+SET IDENTITY_INSERT LibroHistorico ON;

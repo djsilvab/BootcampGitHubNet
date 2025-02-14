@@ -161,6 +161,22 @@ namespace BaezStone.Demo02.Api.Controllers
             return Ok("Actualización de precio");                        
         }
 
+        [HttpGet("GetBooksUsingHavingQuery")]
+        public async Task<ActionResult<IEnumerable<LibroDto>>> GetBooksUsingHavingQuery()
+        {
+            var lst = await context.Libros
+                                    .Include(l => l.Categoria)
+                                    .GroupBy(l => l.Categoria.Nombre)
+                                    .Where(grp => grp.Count() > 1)
+                                    .Select(grp => new {
+                                        Categoria = grp.Key,
+                                        Cantidad = grp.Count()
+                                    })
+                                    .ToListAsync();
+                                    
+            return Ok(lst);
+        }
+
 
     }
 }
